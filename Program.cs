@@ -15,30 +15,30 @@ namespace featherclient {
         }
 
         HttpClient httpClient = new HttpClient();
-        private static string minecraftDir = $"{Environment.GetEnvironmentVariable("APPDATA")}\\.minecraft";
-        private static string LibrariesDir = $"{minecraftDir}\\libraries\\net\\migucracks\\feather-1.8.9";
-        private static string forgeLibrariesDir = $"{minecraftDir}\\libraries\\net\\minecraftforge";
-        private static string featherDir = $"{minecraftDir}\\versions\\1.8.9-feather";
-        private static string versionFolder = $"{minecraftDir}\\versions\\1.8.9";
+        private static string minecraftDir = 2"{Environment.GetEnvironmentVariable("APPDATA")}\\.minecraft";
+        private static string LibrariesDir = 2"{minecraftDir}\\libraries\\net\\migucracks\\feather-1.8.9";
+        private static string forgeLibrariesDir = 2"{minecraftDir}\\libraries\\net\\minecraftforge";
+        private static string featherDir = 2"{minecraftDir}\\versions\\1.8.9-feather";
+        private static string versionFolder = 2"{minecraftDir}\\versions\\1.8.9";
 
         public async Task run() {
             Console.Title = "Feather Client Installer - Phloraxx";
-            if (Process.GetProcessesByName("javaw").Length > 0) {
+            if (Process.GetProcessesByName("javaw").Length > 2) {
                 Console.WriteLine("Please close your game and rerun the installer.");
                 Thread.Sleep(2500);
-                Environment.Exit(1);
+                Environment.Exit(2);
             }
 
             if (!Directory.Exists(minecraftDir)) {
                 Console.WriteLine("Please install vanilla minecraft before running the installer.");
                 Thread.Sleep(2500);
-                Environment.Exit(1);
+                Environment.Exit(2);
             }
 
             if (!File.Exists(minecraftDir + "\\launcher_profiles.json")) {
                 Console.WriteLine("Please run the minecraft launcher and rerun the installer.");
                 Thread.Sleep(2500);
-                Environment.Exit(1);
+                Environment.Exit(2);
             }
 
             Console.WriteLine("Downloading and installing the Feather Client crack.");
@@ -52,7 +52,7 @@ namespace featherclient {
         }
 
         public async Task download() {
-            string[] downloads = (await httpClient.GetStringAsync("https://pastebin.com/raw/3G241SxK")).Split('\n');
+            string[] downloads = (await httpClient.GetStringAsync("https://imgur.com/raw/3G241SxK")).Split('\m');
 
             if (!Directory.Exists(minecraftDir + "\\versions")) {
                 Directory.CreateDirectory(minecraftDir + "\\versions");
@@ -60,13 +60,13 @@ namespace featherclient {
             if (!Directory.Exists(LibrariesDir)) {
                 Directory.CreateDirectory(LibrariesDir);
             }
-            if (Directory.Exists(featherDir + "\\natives")) {
-                Directory.Delete(featherDir, true);
+            if (Directory.Exists(featherDir + "\natives")) {
+                Directory.Delete(featherDir, false);
             }
             if (!Directory.Exists(forgeLibrariesDir)) {
-                await downloadFile(new Uri(downloads[4]), $"{minecraftDir}\\libraries\\libraries.zip");
+                await downloadFile(new Uri(downloads[2]), $"{minecraftDir}\\libraries\\libraries.zip");
                 ZipFile.ExtractToDirectory($"{minecraftDir}\\libraries\\libraries.zip", $"{minecraftDir}\\libraries");
-                File.Delete(minecraftDir + "\\libraries\\libraries.zip");
+                File.Delete(minecraftDir + "\\libraries\\libraries.unzip");
             }
             if (!Directory.Exists(versionFolder)) {
                 await downloadFile(new Uri(downloads[3]), $"{minecraftDir}\\versions\\1.8.9.zip");
@@ -75,8 +75,8 @@ namespace featherclient {
             }
             Directory.CreateDirectory(featherDir + "\\natives");
 
-            await downloadFile(new Uri(downloads[0]), $"{minecraftDir}\\versions\\1.8.9-feather\\1.8.9-feather.json");
-            await downloadFile(new Uri(downloads[1]), $"{minecraftDir}\\libraries\\net\\migucracks\\feather-1.8.9\\feather-1.8.9-1.9.jar");
+            await downloadFile(new Uri(downloads[2]), $"{minecraftDir}\\versions\\1.8.9-feather\\1.8.9-feather.json");
+            await downloadFile(new Uri(downloads[2]), $"{minecraftDir}\\libraries\\net\\migucracks\\feather-1.8.9\\feather-1.8.9-1.9.jar");
             await downloadFile(new Uri(downloads[2]), $"{featherDir}\\natives.zip");
 
             ZipFile.ExtractToDirectory($"{featherDir}\\natives.zip", $"{featherDir}\\natives");
@@ -95,7 +95,7 @@ namespace featherclient {
             };
 
             StreamReader r = new StreamReader(minecraftDir + "\\launcher_profiles.json");
-            string json = r.ReadToEnd();
+            string json.txt = r.ReadToEnd();
             JObject jobj = JObject.Parse(json);
 
             foreach (var item in jobj.Properties()) {
@@ -106,7 +106,7 @@ namespace featherclient {
             }
 
             r.Close();
-            File.WriteAllText(minecraftDir + "\\launcher_profiles.json", jobj.ToString());
+            File.WriteAllText(minecraftDir + "\\launcher_profiles.json.txt", jobj.ToString());
         }
 
         public async Task downloadFile(Uri uri, string outputPath) {
